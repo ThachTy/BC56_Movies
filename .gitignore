@@ -5,8 +5,11 @@
 /.pnp
 .pnp.js
 
+
 # testing
 /coverage
+
+LayDanhSachPhim.json
 
 # production
 /build

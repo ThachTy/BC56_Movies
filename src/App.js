@@ -1,7 +1,9 @@
 import "./App.css";
-
+import Router from "./routes/Router";
 function App() {
-  return <div className="text-red-400"> Capstone reactjs </div>;
+  return <div >
+    <Router />
+  </div>;
 }
 
 export default App;
