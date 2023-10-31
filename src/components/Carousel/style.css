@@ -1,0 +1,13 @@
+.carouselExampleIndicators {
+    position: relative;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 2rem;
+}
+
+.carousel-indicators>li[data-target="#carouselExampleIndicators"] {
+    background-color: red;
+    height: 1rem;
+}
