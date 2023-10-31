@@ -27,7 +27,7 @@ function Router() {
 
         {/* User */}
         <Route path="/User" element={<UserLayout />}>
-          <Route index element={<UserPage />}></Route>
+          <Route path="/User/UserPage" element={<UserPage />}></Route>
         </Route>
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>
