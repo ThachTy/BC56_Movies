@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { adminUser } from "../../service/axios/axios";
 import { Table, Tag } from "antd";
-
 export default function UserPage() {
   // gọi api lấy danh sách người dùng
   const [user, setUser] = useState([]);
   console.log("🚀 ~ file: UserPage.js:7 ~ UserPage ~ user:", user);
   const getUser = () => {
-    adminUser
-      .getUserList("?manhom=GP01")
-      .then((res) => {
-        console.log("🚀 ~ file: UserPage.js:11 ~ .then ~ res:", res);
-        setUser(res.data.content);
-      })
-      .catch((err) => {
-        console.log("🚀 ~ file: UserPage.js:15 ~ getUser ~ err:", err);
-      });
+    console.log("phu");
   };
   useEffect(() => {
     getUser();
