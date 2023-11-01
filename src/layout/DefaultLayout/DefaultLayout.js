@@ -8,7 +8,7 @@ export default function DefaultLayout() {
     return (
         <div className='flex flex-col justify-between items-center w-full min-h-screen' >
             <Header ></Header>
-            <div className='flex-grow w-full'>
+            <div className='flex-grow w-full h-full'>
                 <Outlet></Outlet>
             </div>
 
