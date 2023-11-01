@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const https = axios.create({
-  baseURL: "",
+  baseURL: "https://movienew.cybersoft.edu.vn",
   headers: {
-    Token: "",
+    TokenCybersoft:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA1NiIsIkhldEhhblN0cmluZyI6IjAzLzA0LzIwMjQiLCJIZXRIYW5UaW1lIjoiMTcxMjEwMjQwMDAwMCIsIm5iZiI6MTY4MzMwNjAwMCwiZXhwIjoxNzEyMjUwMDAwfQ.YeDhc_oSixV2XtFPDzcpxFhBos5832JpQpndHNoqZLk",
   },
 });
 
@@ -32,3 +33,5 @@ https.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export default https;
