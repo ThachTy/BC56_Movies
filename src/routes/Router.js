@@ -12,6 +12,7 @@ import UserPage from "../pages/UserPage/UserPage";
 /* Component */
 import Login from "../features/Login/Login";
 import Register from "../features/Register/Register";
+import MovieAdmin from "../pages/MovieAdmin/MovieAdmin";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
         {/* User */}
         <Route path="/User" element={<UserLayout />}>
           <Route path="/User/UserPage" element={<UserPage />}></Route>
+          <Route path="/User/MovieAdmin" element={<MovieAdmin />} />
         </Route>
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>

@@ -62,6 +62,18 @@ const UserLayout = () => {
                 </p>
               ),
             },
+            {
+              label: (
+                <p
+                  onClick={() => {
+                    navigate("/User/MovieAdmin");
+                  }}
+                >
+                  <UserOutlined />
+                  <span>Quản lý Movie</span>
+                </p>
+              ),
+            },
           ]}
         />
       </Sider>
