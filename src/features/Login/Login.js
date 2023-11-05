@@ -23,7 +23,6 @@ function Login() {
         try {
             await userAPI.postLoginUser(values)
                 .then(res => {
-                    console.log(res.data.content);
                     /* User check Remember */
                     let infoUser = (isRememberRef.current) ? { accessToken: res?.data.content.accessToken, taiKhoan: values?.taiKhoan, matKhau: values?.matKhau }
                         : { accessToken: res?.data.content.accessToken };
@@ -31,8 +30,8 @@ function Login() {
                     let isLogin = setLocaleStorage("User", infoUser);
                     /* */
                     isLogin && message.open({ type: "success", content: "Đăng nhập thành công" })
-                        && dispatch({ type: SET_USER, payload: res?.data.content });
-                    // && setTimeout(() => navigate("/Home"), 1500);
+                        && dispatch({ type: SET_USER, payload: res?.data.content })
+                        && setTimeout(() => navigate("/Home"), 1500);
                 }).catch(err => { throw err?.response.data.content });
         } catch (error) {
             message.open({ type: "error", content: error });
@@ -107,8 +106,13 @@ function Login() {
                                 span: 16,
                             }}
                         >
-                            <Checkbox defaultChecked={isRememberRef.current} onChange={handleOnchange}  >Nhớ Mật Khẩu !</Checkbox> <Link className='underline' to={"/Register"}>Đăng Ký ?</Link>
+                            <>
+                                <Checkbox defaultChecked={isRememberRef.current} onChange={handleOnchange}  >Nhớ Mật Khẩu !</Checkbox>
+                                <Link className='underline' to={"/Register"}>Đăng Ký ?</Link>
+                            </>
                         </Form.Item>
+
+
                         <Form.Item
                             wrapperCol={{
                                 offset: 7,
