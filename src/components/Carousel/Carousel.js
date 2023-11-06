@@ -1,24 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./style.css";
+import { bannerAPI } from "../../service/axios/api";
 
 function Carousel() {
+    const [listBanner, setListBanner] = useState([]);
+
+    useEffect(() => {
+        const fetchBannerFromApi = async () => {
+            try {
+                await bannerAPI.getBanners().then(
+                    res => {
+                        console.log(res?.data.content);
+                        setListBanner(res?.data.content);
+                    }
+                ).catch(
+                    error => { throw error; }
+                )
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+        fetchBannerFromApi();
+    }, [])
+
     return (
-        <div id="carouselExampleIndicators" className="carousel slide bg-red-200" data-ride="carousel">
+        <div id="carouselExampleIndicators" className="carousel slide " data-ride="carousel">
             <ol className="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                {/* Indicators */}
+                {listBanner?.map((_, index) => {
+                    return (
+                        <li key={`carousel-indicators-${index}`} data-target="#carouselExampleIndicators" data-slide-to={index} className={`${index == 0 && "active"}`}></li>
+                    )
+                })}
             </ol>
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img className="d-block lg:object-cover object-contain w-100" src="https://images.hdqwalls.com/download/marvel-avengers-the-kang-dynasty-t0-1280x800.jpg" alt="First slide" />
-                </div>
-                <div className="carousel-item">
-                    <img className="d-block lg:object-cover object-contain w-100" src="https://i.ytimg.com/vi/3LIn-taLi84/maxresdefault.jpg" alt="Second slide" />
-                </div>
-                <div className="carousel-item">
-                    <img className="d-block lg:object-cover object-contain w-100" src="https://wallpaperaccess.com/full/621144.jpg" alt="Third slide" />
-                </div>
+                {/* Carousel items */}
+                {listBanner?.map((banner, index) => {
+                    return (
+                        <div key={`carousel-items-${index}`} className={`carousel-item + ${index == 0 && "active"}`}>
+                            <img className="d-block object-fill w-full h-[350px] md:h-[450px] lg:object-cover lg:h-[90vh]" src={banner?.hinhAnh} alt={banner?.maPhim} />
+                        </div>
+                    )
+                })}
             </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,7 +52,7 @@ function Carousel() {
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="sr-only">Next</span>
             </a>
-        </div>
+        </div >
     );
 };
 export default Carousel;

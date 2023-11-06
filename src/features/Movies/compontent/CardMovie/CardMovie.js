@@ -1,28 +1,31 @@
-import React from 'react'
+import React from 'react';
+import { Rate } from "antd";
+import "./style.css";
 
 export default function CardMovie({ movie }) {
     return (
-        <div className="group relative">
-            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <div className="card-movie group relative">
+            <div className="card-image aspect-h-1 aspect-w-1 w-full overflow-hidden group-hover:opacity-75 lg:aspect-none ">
                 <img
                     src={movie?.hinhAnh}
                     alt={movie?.maPhim}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    className="h-[350px] w-full object-cover"
                 />
             </div>
-            <div className="mt-4 flex justify-between">
-                <div>
-                    <h3 className="text-sm text-gray-700">
-                        <a href={movie?.trailer}>
-                            <span aria-hidden="true" className="absolute inset-0" />
-                            {movie?.name}
-                        </a>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">{movie?.tenPhim}</p>
+            <div className="card-content p-2 w-full ">
+                <a className='card-name block h-[40px] mt-1' href={movie?.trailer}>
+                    {movie?.tenPhim}
+                </a>
+                {/* Rate */}
+
+                <Rate disabled allowHalf defaultValue={Math.round(movie?.danhGia / 2)} />
+
+                <p className="card-date mb-2">{new Date(movie?.ngayKhoiChieu)?.toLocaleDateString("en-GB", { day: '2-digit', month: '2-digit', year: 'numeric' })}</p>
+                <div className='w-full flex flex-row gap-1'>
+                    <button className='card-booking w-full px-[0.3rem] py-[0.2rem]' type='button'>Đặt Vé</button>
+                    <button className='card-detail w-full px-[0.3rem] py-[0.2rem]' type='button'>Chi Tiết</button>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{movie?.ngayKhoiChieu}</p>
             </div>
-            <div className=''><button className='bg-red-400' type='button'>Đặt Vé</button></div>
         </div>
     )
 }
