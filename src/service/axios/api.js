@@ -59,3 +59,26 @@ export let adminService = {
     return https.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, payload);
   },
 };
+
+export const movieService = {
+  getList: () => {
+    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09");
+  },
+  getDetail: (id) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  },
+  getMovieByTheather: () => {
+    return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
+  },
+  getDetailBooking: (id) => {
+    return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
+  },
+  getToPurchase: (idBooking) => {
+    return https.get(
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+    );
+  },
+  bookingTicket: (ticket) => {
+    return https.post("/api/QuanLyDatVe/DatVe", ticket);
+  },
+};

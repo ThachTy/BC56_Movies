@@ -1,7 +1,7 @@
 import React from "react";
 import { Rate } from "antd";
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 
 export default function CardMovie({ movie }) {
   return (
@@ -37,7 +37,7 @@ export default function CardMovie({ movie }) {
             className="card-booking w-full px-[0.3rem] py-[0.2rem]"
             type="button"
           >
-            <Link to="/datve">Đặt Vé</Link>
+            <Link to={`/datve/${movie.maPhim}`}>Đặt Vé</Link>
           </div>
           <div
             className="card-detail w-full px-[0.3rem] py-[0.2rem]"
