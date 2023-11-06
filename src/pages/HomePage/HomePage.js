@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 import Movies from "../../features/Movies/Movies";
 import Cinema from "../../features/Cinema/Cinema";
+import ToolMovie from "../../features/ToolMovies/ToolMovies";
 export default function HomePage() {
     return (
         <main>
@@ -16,28 +17,11 @@ export default function HomePage() {
             <section id="movies" className='movies'>
                 <div className='container'>
                     {/* Search */}
-                    <div className='bg-slate-400 grid grid-cols-4'>
-                        <div className='col'>
-                            <select>
-                                <option>Phim</option>
-                            </select>
-                        </div>
-                        <div className='col'>
-                            <select>
-                                <option>Rạp</option>
-                            </select>
-                        </div>
-                        <div className='col'>
-                            <select>
-                                <option>Ngày chiếu</option>
-                            </select>
-                        </div>
-                        <div className='col'>
-                            <input type='text' placeholder='Tìm phim...' />
-                        </div>
+                    <div className='bg-[#f1f1f1] rounded-md py-3 my-2 mt-5 grid place-items-center grid-cols-3 w-full'>
+                        <ToolMovie></ToolMovie>
                     </div>
                     {/* All Movies */}
-                    <div className='movies-content'>
+                    <div className='movies-content rounded-sm mx-auto max-w-2xl px-0 lg:max-w-7xl'>
                         <Movies></Movies>
                     </div>
                 </div>
