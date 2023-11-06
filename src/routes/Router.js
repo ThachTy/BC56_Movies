@@ -34,7 +34,9 @@ function Router() {
         </Route>
 
         {/* BOOKING */}
-        <Route path="/datve" element={<Booking />}></Route>
+        <Route path="/datve" element={<Booking />}>
+          <Route path=":maPhim"></Route>
+        </Route>
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>
       </Routes>
