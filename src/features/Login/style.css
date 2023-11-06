@@ -6,6 +6,9 @@
     background-size: cover;
     background-position: center;
     position: relative;
+
+    mask: linear-gradient(45deg, transparent, rgb(255, 255, 255, 0.8)) 20%, rgb(255, 255, 255, 0.8) 20%, transparent;
+    -webkit-mask: linear-gradient(45deg, transparent, rgb(255, 255, 255, 0.8)) 20%, rgb(255, 255, 255, 0.8) 20%, transparent;
 }
 
 .login-content {

@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { getLocaleStorage } from "../../base/base"
 const https = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn",
   headers: {
@@ -12,6 +12,10 @@ const https = axios.create({
 https.interceptors.request.use(
   function (config) {
     // Do something before request is sent
+    let user = getLocaleStorage("User");
+
+    config.headers.Authorization = user && ("Bearer " + user.accessToken);
+
     return config;
   },
   function (error) {
