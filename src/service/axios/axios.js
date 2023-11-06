@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getLocaleStorage } from "../../base/base"import { getAccessToken } from "../../utils";
+import { getLocaleStorage } from "../../base/base";
+import { getAccessToken } from "../../utils";
 
 const https = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn",
@@ -16,7 +17,7 @@ https.interceptors.request.use(
     // Do something before request is sent
     let user = getLocaleStorage("User");
 
-    config.headers.Authorization = user && ("Bearer " + user.accessToken);
+    config.headers.Authorization = user && "Bearer " + user.accessToken;
 
     return config;
   },
