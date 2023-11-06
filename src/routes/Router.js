@@ -14,6 +14,7 @@ import Login from "../features/Login/Login";
 import Register from "../features/Register/Register";
 import MovieAdmin from "../pages/MovieAdmin/MovieAdmin";
 import Booking from "../pages/Booking/Booking";
+import MovieDetail from "../pages/Booking/MovieDetail";
 
 function Router() {
   return (
@@ -35,7 +36,7 @@ function Router() {
 
         {/* BOOKING */}
         <Route path="/datve" element={<Booking />}>
-          <Route path=":maPhim"></Route>
+          <Route path=":maPhim" element={<MovieDetail />}></Route>
         </Route>
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>

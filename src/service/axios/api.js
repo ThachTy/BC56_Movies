@@ -27,9 +27,7 @@ export const bannerAPI = {
 export const moviesAPI = {
   // /api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09
   getAllMovies: async () => {
-    return await https.get(
-      `/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09`
-    );
+    return https.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09`);
   },
   // /api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=1&soPhanTuTrenTrang=10
   getMovies: async (soTrang, soPhanTuTrenTrang) => {
@@ -37,9 +35,26 @@ export const moviesAPI = {
       `/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`
     );
   },
+  getDetail: async (id) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  },
+  getMovieByTheather: async () => {
+    return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
+  },
+  getDetailBooking: async (id) => {
+    return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?maPhim=${id}`);
+  },
+  getToPurchase: async (idBooking) => {
+    return https.get(
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+    );
+  },
+  bookingTicket: async (ticket) => {
+    return https.post("/api/QuanLyDatVe/DatVe", ticket);
+  },
 };
 
-export let adminService = {
+export const adminService = {
   getUserList: (query = "") => {
     return https.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung/${query}`);
   },
@@ -62,23 +77,6 @@ export let adminService = {
 
 export const movieService = {
   getList: () => {
-    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09");
-  },
-  getDetail: (id) => {
-    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
-  },
-  getMovieByTheather: () => {
-    return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
-  },
-  getDetailBooking: (id) => {
-    return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
-  },
-  getToPurchase: (idBooking) => {
-    return https.get(
-      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
-    );
-  },
-  bookingTicket: (ticket) => {
-    return https.post("/api/QuanLyDatVe/DatVe", ticket);
+    return https.get("/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09");
   },
 };
