@@ -13,6 +13,7 @@ import UserPage from "../pages/UserPage/UserPage";
 import Login from "../features/Login/Login";
 import Register from "../features/Register/Register";
 import MovieAdmin from "../pages/MovieAdmin/MovieAdmin";
+import Booking from "../pages/Booking/Booking";
 
 function Router() {
   return (
@@ -31,6 +32,9 @@ function Router() {
           <Route path="/User/UserPage" element={<UserPage />}></Route>
           <Route path="/User/MovieAdmin" element={<MovieAdmin />} />
         </Route>
+
+        {/* BOOKING */}
+        <Route path="/datve" element={<Booking />}></Route>
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>
       </Routes>
