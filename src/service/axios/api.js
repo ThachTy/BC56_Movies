@@ -5,15 +5,25 @@ export const userAPI = {
   postLoginUser: async ({ taiKhoan, matKhau }) => {
     return https.post(`/api/QuanLyNguoiDung/DangNhap/`, { taiKhoan, matKhau });
   },
-  // getUserFromAccessToken: (accessToken) => {
-  //     return https.post();
-  // },
+};
 
-  getTypeUser: async () => {
-    return https.get(`/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`);
+export let adminService = {
+  getUserList: (query = "") => {
+    return https.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung/${query}`);
   },
 
-  postNewUser: async (user) => {
-    return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, user);
+  deleteUser: (taiKhoan = "") => {
+    return https.delete(
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
+    );
+  },
+  getUserDetailId: (taiKhoan) => {
+    return https.post(
+      `/api/QuanLyNguoiDung/LayThongTinNguoiDung?TaiKhoan=${taiKhoan}`
+    );
+  },
+  updateUser: (payload) => {
+    console.log(payload);
+    return https.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, payload);
   },
 };

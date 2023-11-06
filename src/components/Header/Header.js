@@ -52,7 +52,7 @@ export default function Header() {
                   </a>
                 </li>
                 <li>
-                  <Link to="/User" className="block py-2 pr-4 pl-3">
+                  <Link to="/User/UserPage" className="block py-2 pr-4 pl-3">
                     User
                   </Link>
                 </li>

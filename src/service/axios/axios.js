@@ -1,10 +1,12 @@
 import axios from "axios";
-import { getLocaleStorage } from "../../base/base"
+import { getLocaleStorage } from "../../base/base"import { getAccessToken } from "../../utils";
+
 const https = axios.create({
   baseURL: "https://movienew.cybersoft.edu.vn",
   headers: {
     TokenCybersoft:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA1NiIsIkhldEhhblN0cmluZyI6IjAzLzA0LzIwMjQiLCJIZXRIYW5UaW1lIjoiMTcxMjEwMjQwMDAwMCIsIm5iZiI6MTY4MzMwNjAwMCwiZXhwIjoxNzEyMjUwMDAwfQ.YeDhc_oSixV2XtFPDzcpxFhBos5832JpQpndHNoqZLk",
+    Authorization: `Bearer ` + getAccessToken(),
   },
 });
 
