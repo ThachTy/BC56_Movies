@@ -38,3 +38,24 @@ export const moviesAPI = {
     );
   },
 };
+
+export let adminService = {
+  getUserList: (query = "") => {
+    return https.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung/${query}`);
+  },
+
+  deleteUser: (taiKhoan = "") => {
+    return https.delete(
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
+    );
+  },
+  getUserDetailId: (taiKhoan) => {
+    return https.post(
+      `/api/QuanLyNguoiDung/LayThongTinNguoiDung?TaiKhoan=${taiKhoan}`
+    );
+  },
+  updateUser: (payload) => {
+    console.log(payload);
+    return https.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, payload);
+  },
+};
