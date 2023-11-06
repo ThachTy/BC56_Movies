@@ -10,7 +10,6 @@ function Carousel() {
             try {
                 await bannerAPI.getBanners().then(
                     res => {
-                        console.log(res?.data.content);
                         setListBanner(res?.data.content);
                     }
                 ).catch(

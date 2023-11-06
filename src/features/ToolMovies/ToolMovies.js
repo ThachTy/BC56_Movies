@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Select, Tag, Space, DatePicker } from 'antd';
 
 
@@ -44,6 +44,12 @@ const tagRender = (props) => {
 
 
 const ToolMovie = () => {
+
+    const [listCinema, setListCinema] = useState([]);
+
+    useEffect(() => {
+
+    }, []);
 
     const onChange = (date, dateString) => {
         console.log(date, dateString);

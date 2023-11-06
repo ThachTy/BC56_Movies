@@ -26,8 +26,12 @@ export const bannerAPI = {
 }
 
 export const moviesAPI = {
-    // https://movienew.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=1&soPhanTuTrenTrang=10
-    getMovies: async (soTrang = 1, soPhanTuTrenTrang = 10) => {
-        return https.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=1&soPhanTuTrenTrang=10`);
+    // /api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09
+    getAllMovies: async () => {
+        return await https.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09`);
+    },
+    // /api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=1&soPhanTuTrenTrang=10
+    getMovies: async (soTrang, soPhanTuTrenTrang) => {
+        return https.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`);
     }
 }
