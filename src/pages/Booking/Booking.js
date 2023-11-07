@@ -1,14 +1,14 @@
 import React from "react";
-import ListSeat from "./ListSeat";
-import ChooseSeat from "./ChooseSeat";
 import Header from "../../components/Header/Header";
 import MovieDetail from "./MovieDetail";
+import TheaterMovie from "./TheaterMovie";
 
 export default function Booking() {
   return (
     <div>
       <Header />
       <MovieDetail />
+      <TheaterMovie />
     </div>
   );
 }
