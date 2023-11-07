@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import { moviesAPI } from "../../service/axios/api";
 
 export default function MovieDetail() {
-  const { id } = useParams();
+  const { maPhim } = useParams();
+  console.log(maPhim);
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
     moviesAPI
-      .getDetail(id)
+      .getDetail(maPhim)
       .then((res) => {
         console.log("🚀 ~ file: MovieDetail.js:13 ~ .then ~ res:", res);
       })

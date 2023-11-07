@@ -37,7 +37,7 @@ export default function CardMovie({ movie }) {
             className="card-booking w-full px-[0.3rem] py-[0.2rem]"
             type="button"
           >
-            <Link to={`/datve?maPhim=${movie.maPhim}`}>Đặt Vé</Link>
+            <Link to={`/datve/${movie?.maPhim}`}>Đặt Vé</Link>
           </div>
           <div
             className="card-detail w-full px-[0.3rem] py-[0.2rem]"
