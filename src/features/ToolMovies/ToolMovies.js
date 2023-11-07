@@ -1,38 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { Select, Tag, Space, DatePicker } from 'antd';
+import { cinemaAPI } from '../../service/axios/api';
+import { setAllCinemaAction } from "../../service/redux/action/cinemaAction";
+import useSelection from 'antd/es/table/hooks/useSelection';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 // Loại Phim
 const options = [
     {
-        value: 'gold',
+        value: 'Hành Động'
     },
     {
-        value: 'lime',
+        value: 'Kinh Dị'
     },
     {
-        value: 'green',
+        value: 'Hài'
     },
     {
-        value: 'cyan',
+        value: 'Viển Tưởng'
     },
 ];
 
 
 
 const tagRender = (props) => {
-    const { label, value, closable, onClose } = props;
+    const { label, closable, onClose } = props;
     const onPreventMouseDown = (event) => {
         event.preventDefault();
         event.stopPropagation();
     };
     return (
         <Tag
-            color={value}
             onMouseDown={onPreventMouseDown}
             closable={closable}
             onClose={onClose}
             style={{
+                backgroundColor: "crimson",
+                color: "#fff",
                 marginRight: 3,
             }}
         >
@@ -44,12 +49,14 @@ const tagRender = (props) => {
 
 
 const ToolMovie = () => {
-
-    const [listCinema, setListCinema] = useState([]);
+    const { listCinema } = useSelector(state => state.cinemaReducer);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-
+        dispatch(setAllCinemaAction());
     }, []);
+
+
 
     const onChange = (date, dateString) => {
         console.log(date, dateString);
@@ -62,7 +69,6 @@ const ToolMovie = () => {
                     placeholder="Loai Phim"
                     mode="multiple"
                     tagRender={tagRender}
-                    defaultValue={['gold', 'cyan']}
                     options={options}
                 />
             </div>
@@ -76,32 +82,9 @@ const ToolMovie = () => {
                     filterSort={(optionA, optionB) =>
                         (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                     }
-                    options={[
-                        {
-                            value: '1',
-                            label: 'Not Identified',
-                        },
-                        {
-                            value: '2',
-                            label: 'Closed',
-                        },
-                        {
-                            value: '3',
-                            label: 'Communicated',
-                        },
-                        {
-                            value: '4',
-                            label: 'Identified',
-                        },
-                        {
-                            value: '5',
-                            label: 'Resolved',
-                        },
-                        {
-                            value: '6',
-                            label: 'Cancelled',
-                        },
-                    ]}
+                    options={
+                        listCinema.map(item => ({ value: item?.maHeThongRap, label: item?.tenHeThongRap }))
+                    }
                 />
             </div>
             <div className='col'>

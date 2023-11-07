@@ -1,7 +1,7 @@
 import React from "react";
 import { Rate } from "antd";
+import { Link } from "react-router-dom";
 import "./style.css";
-import { Link, Route, Routes } from "react-router-dom";
 
 export default function CardMovie({ movie }) {
   return (
@@ -18,7 +18,6 @@ export default function CardMovie({ movie }) {
           {movie?.tenPhim}
         </a>
         {/* Rate */}
-
         <Rate
           disabled
           allowHalf
@@ -26,6 +25,7 @@ export default function CardMovie({ movie }) {
         />
 
         <p className="card-date mb-2">
+          <i class="bi bi-calendar-heart mx-1"></i>
           {new Date(movie?.ngayKhoiChieu)?.toLocaleDateString("en-GB", {
             day: "2-digit",
             month: "2-digit",
@@ -39,12 +39,13 @@ export default function CardMovie({ movie }) {
           >
             <Link to={`/datve/${movie?.maPhim}`}>Đặt Vé</Link>
           </div>
-          <div
+          <Link
+            to={`/Movie/${movie?.maPhim}`}
             className="card-detail w-full px-[0.3rem] py-[0.2rem]"
             type="button"
           >
             Chi Tiết
-          </div>
+          </Link>
         </div>
       </div>
     </div>

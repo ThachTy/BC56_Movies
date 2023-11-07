@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Pagination } from "antd";
+import { ConfigProvider, Pagination } from "antd";
 import CardMovie from "./compontent/CardMovie/CardMovie";
 import { moviesAPI } from "../../service/axios/api";
 import Booking from "../../pages/Booking/Booking";
@@ -60,9 +60,7 @@ export default function Movies() {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-3 lg:gap-5">
         {listMovie?.map((movie) => (
-          <div key={movie.maPhim}>
-            <CardMovie movie={movie} />
-          </div>
+          <CardMovie key={movie.maPhim} movie={movie}></CardMovie>
         ))}
       </div>
     </>

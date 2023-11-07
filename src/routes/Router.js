@@ -9,6 +9,7 @@ import UserLayout from "../layout/UserLayout/UserLayout";
 import HomePage from "../pages/HomePage/HomePage";
 import NotFound from "../pages/NotFound/NotFound";
 import UserPage from "../pages/UserPage/UserPage";
+import DetailMoviePage from "../pages/DetailMoviePage/DetailMoviePage";
 /* Component */
 import Login from "../features/Login/Login";
 import Register from "../features/Register/Register";
@@ -24,8 +25,12 @@ function Router() {
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<HomePage />}></Route>
           <Route path="Home" element={<Navigate to="/" />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
-          <Route path="/Register" element={<Register />}></Route>
+          <Route path="Login" element={<Login />}></Route>
+          <Route path="Register" element={<Register />}></Route>
+          <Route path="Movie">
+            <Route index element={<NotFound>Not Found...</NotFound>}></Route>
+            <Route path=":maPhim" element={<DetailMoviePage />}></Route>
+          </Route>
         </Route>
 
         {/* User */}
@@ -41,7 +46,7 @@ function Router() {
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

@@ -29,12 +29,11 @@ export default function HomePage() {
 
             {/* Cinema */}
             <section id='cinema' className='cinema'>
-                <div className='container'>
-                    <h3 className='text-center'>Rạp Chiếu Phim</h3>
+                <div className='container my-[2rem] py-[1rem] bg-[#f3f4fa] rounded-md'>
+                    <h3 className='text-left text-[2rem] mb-5'>Rạp Chiếu Phim</h3>
                     <Cinema></Cinema>
                 </div>
             </section>
-
         </main>
     )
 }
