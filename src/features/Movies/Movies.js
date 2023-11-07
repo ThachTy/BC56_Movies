@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Pagination } from 'antd';
+import { ConfigProvider, Pagination } from 'antd';
 import CardMovie from './compontent/CardMovie/CardMovie';
 import { moviesAPI } from '../../service/axios/api';
 
@@ -37,7 +37,11 @@ export default function Movies() {
 
     return (
         <>
-            <div className='text-center py-3 pb-5 '><Pagination onChange={(page, pageSize) => handleChangePage(page, pageSize)} defaultCurrent={1} defaultPageSize={10} total={totalMovieRef.current}></Pagination></div >
+            <div className='text-center py-3 pb-5 '>
+                <ConfigProvider theme={{ components: { Pagination: { itemActiveBg: "crimson" }, } }}>
+                    <Pagination onChange={(page, pageSize) => handleChangePage(page, pageSize)} defaultCurrent={1} defaultPageSize={10} total={totalMovieRef.current}></Pagination>
+                </ConfigProvider>
+            </div >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-3 lg:gap-5">
                 {
                     listMovie?.map((movie) => (
