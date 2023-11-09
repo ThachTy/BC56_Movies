@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { moviesAPI } from "../../service/axios/api";
 import { ConfigProvider, Tabs } from "antd";
 import moment from "moment/moment";
@@ -38,15 +38,16 @@ export default function TheaterMovie() {
                   <div className="flex gap-3">
                     {cumRap.lichChieuPhim.slice(0, 6).map((lichChieu) => {
                       return (
-                        <NavLink
-                          to={`/purchase/${lichChieu.maLichChieu}`}
+                        <Link
+                          to={`/buy/${lichChieu?.maLichChieu}`}
                           key={lichChieu.maLichChieu}
                           className="inline-block px-2 py-1 rounded bg-red-500 text-white max-w-[120px]"
+                          type="button"
                         >
                           {moment(lichChieu.ngayChieuGioChieu).format(
                             "DD/MM/YY - hh:mm"
                           )}
-                        </NavLink>
+                        </Link>
                       );
                     })}
                   </div>

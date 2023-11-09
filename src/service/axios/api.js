@@ -60,9 +60,9 @@ export const moviesAPI = {
   getDetailBooking: async (id) => {
     return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?maPhim=${id}`);
   },
-  getToPurchase: async (idBooking) => {
+  getToBuy: async (maLichChieu) => {
     return https.get(
-      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
     );
   },
   bookingTicket: async (ticket) => {

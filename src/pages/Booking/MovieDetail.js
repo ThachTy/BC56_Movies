@@ -25,12 +25,12 @@ export default function MovieDetail() {
 
   return (
     <div className="">
-      <div className="container p-20 bg-orange-200">
-        <div className="bg-white rounded-lg shadow-2xl md:flex">
+      <div className="container p-20 bg-blue-300">
+        <div className="bg-gray-300 rounded-lg shadow-2xl md:flex-col-reverse">
           <img
             alt=""
             src={detail.hinhAnh}
-            className="md:w-1/3 rounded-lg md:rounded-r-none md:rounded-l-lg h-96 object-cover shrink-0"
+            className="md:max-w-full max-h-full rounded-lg md:rounded-r-none md:rounded-l-lg h-96 object-cover shrink-0"
           />
           <div className="p-6">
             <h2 className="font-bold text-xl md:text-3xl mb-2 text-orange-700">

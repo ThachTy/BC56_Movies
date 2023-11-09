@@ -16,6 +16,7 @@ import Register from "../features/Register/Register";
 import MovieAdmin from "../pages/MovieAdmin/MovieAdmin";
 import Booking from "../pages/Booking/Booking";
 import MovieDetail from "../pages/Booking/MovieDetail";
+import BuyTicket from "../pages/Booking/BuyTicket";
 
 function Router() {
   return (
@@ -43,10 +44,13 @@ function Router() {
         <Route path="/datve" element={<Booking />}>
           <Route path=":maPhim" element={<MovieDetail />}></Route>
         </Route>
+        <Route path="/">
+          <Route path="/buy/:maLichChieu" element={<BuyTicket />} />
+        </Route>
 
         <Route path="*" element={<NotFound>Not Found...</NotFound>}></Route>
       </Routes>
-    </BrowserRouter >
+    </BrowserRouter>
   );
 }
 

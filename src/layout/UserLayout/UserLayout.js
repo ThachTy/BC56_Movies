@@ -83,12 +83,12 @@ const UserLayout = () => {
           marginLeft: 200,
         }}
       >
-        <Header
+        {/* <Header
           style={{
             padding: 0,
             background: colorBgContainer,
           }}
-        />
+        /> */}
         <Content
           style={{
             margin: "24px 16px 0",
