@@ -11,10 +11,10 @@ const https = axios.create({
 // Add a request interceptor
 https.interceptors.request.use(function (config) {
     // Do something before request is sent
-    let user = getLocaleStorage("User");
-
-    config.headers.Authorization = user && ("Bearer " + user.accessToken);
-
+    let account = getLocaleStorage("User");
+    if (!account) {
+        config.headers.Authorization = "Bearer " + account?.accessToken;
+    }
     return config;
 }, function (error) {
     // Do something with request error

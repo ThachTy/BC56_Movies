@@ -211,8 +211,10 @@ const Register = () => {
                                 </Col>
                             </Row>
                             <Form.Item className='w-full flex justify-center items-center'>
-                                <Button className='px-3 lg:px-7' htmlType='submit'>Đăng Ký</Button>
-                                <Button htmlType='reset' className='px-3 lg:px-7' >Xóa</Button>
+                                <>
+                                    <Button className='px-3 lg:px-7' htmlType='submit'>Đăng Ký</Button>
+                                    <Button htmlType='reset' className='px-3 lg:px-7' >Xóa</Button>
+                                </>
                             </Form.Item>
                         </Form>
                     </div>

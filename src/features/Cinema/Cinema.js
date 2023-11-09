@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { ConfigProvider, Tabs } from 'antd';
+import React, { useEffect, } from 'react';
+import { Tabs } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllCinemaAction, setAllGroupCinemaAction } from '../../service/redux/action/cinemaAction';
+import { changeToSortDate } from '../../base/base';
 const Cinema = () => {
     const dispatch = useDispatch();
     const { listCinema } = useSelector(state => state.cinemaReducer);
@@ -20,7 +21,7 @@ const Cinema = () => {
     const renderMoviesByGroupCinema = (list = []) => {
         return list?.map((movies, index) => {
             let { ngayChieuGioChieu } = movies?.lstLichChieuTheoPhim[0];
-            let ngayChieu = new Date(ngayChieuGioChieu).toLocaleDateString("en-GB", { day: '2-digit', month: '2-digit', year: 'numeric' });
+            let ngayChieu = changeToSortDate(ngayChieuGioChieu);
             let gioChieu = new Date(ngayChieuGioChieu).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
             return movies?.dangChieu && <div key={`MoviesByGroupCinema-${index}`} className='border p-2 w-[calc(100vw - 30px - 25vw)] md:w-[cacl(100vw- 30px - 30vw)] lg:w-[cacl(100vw - 30px -25vw)] hover:bg-slate-200'>
                 <div className='w-full flex flex-col md:flex-row lg:flex-row gap-x-2 gap-y-2'>
