@@ -90,7 +90,6 @@ export const adminService = {
     );
   },
   updateUser: (payload) => {
-    console.log(payload);
     return https.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, payload);
   },
 };

@@ -8,7 +8,6 @@ export default function Booking() {
     <div>
       <Header />
       <MovieDetail />
-      <TheaterMovie />
     </div>
   );
 }

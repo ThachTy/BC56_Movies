@@ -37,7 +37,7 @@ function Router() {
 
         {/* User */}
         <Route path="/User" element={<UserLayout />}>
-          <Route path="/User/MovieAdmin" element={<MovieAdmin />} />
+          <Route path="/User" element={<UserPage />} />
         </Route>
 
         {/* BOOKING */}

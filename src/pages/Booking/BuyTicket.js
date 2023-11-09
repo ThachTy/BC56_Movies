@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { moviesAPI } from "../../service/axios/api";
 import "../Booking/style.css";
+import Header from "../../components/Header/Header";
+import { message } from "antd";
 
 export default function BuyTicket() {
   const { maLichChieu } = useParams();
   const [room, setRoom] = useState([]);
   const [selectSeat, setSelectSeat] = useState([]);
+  let userLogin = JSON.parse(localStorage.getItem("User"));
 
   let getBooking = () => {
     moviesAPI
@@ -46,6 +49,103 @@ export default function BuyTicket() {
       })
     );
   };
+  let chooseSeat = () => {
+    return selectSeat?.map((seat) => {
+      return <span key={seat.maGhe}>Seat:{seat.tenGhe}, </span>;
+    });
+  };
+
+  let totalPay = () => {
+    return selectSeat.reduce((sum, { giaVe }) => {
+      return sum + giaVe;
+    }, 0);
+  };
+
+  let renderBill = () => {
+    let { diaChi, gioChieu, ngayChieu, tenCumRap, tenPhim, tenRap } =
+      room.thongTinPhim || [];
+    return (
+      <table className="w-100 listBuy bg-red-300">
+        <tbody>
+          <tr>
+            <th className="font-medium">Tên Phim:</th>
+            <td className="text-green-500 hover:text-yellow-200">{tenPhim}</td>
+          </tr>
+          <tr>
+            <th className="font-medium">Địa Chỉ</th>
+            <td className="text-green-500 hover:text-yellow-200">{diaChi}</td>
+          </tr>
+          <tr>
+            <th className="font-medium">Tên Rạp:</th>
+            <td className="text-green-500 hover:text-yellow-200">{tenRap}</td>
+          </tr>
+          <tr>
+            <th className="font-medium">Tên Cụm Rạp:</th>
+            <td className="text-green-500 hover:text-yellow-200">
+              {tenCumRap}
+            </td>
+          </tr>
+          <tr>
+            <th className="font-medium">Ngày Chiếu </th>
+            <td className="text-green-500 hover:text-yellow-200">
+              {ngayChieu}
+            </td>
+          </tr>
+          <tr>
+            <th className="font-medium">Suất Chiếu</th>
+            <td className="text-green-500 hover:text-yellow-200">
+              {gioChieu}-{ngayChieu}
+            </td>
+          </tr>
+          <tr>
+            <th className="font-medium">Chỗ chọn</th>
+            <td className="text-green-500 hover:text-yellow-200">
+              {chooseSeat()}
+            </td>
+          </tr>
+          <tr>
+            <th className="font-medium">Tổng tiền</th>
+            <td className="text-black hover:text-yellow-200">
+              {totalPay().toLocaleString()}VNĐ
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  };
+
+  let handleBuyTicket = () => {
+    if (selectSeat.length == 0) {
+      return message.error("hãy chọn chỗ ngồi bạn mong muốn trước");
+    }
+    let danhSachVe = selectSeat.map((seat) => {
+      return {
+        maGhe: seat.maGhe,
+        giaVe: seat.giaVe,
+      };
+    });
+
+    let ticket = {
+      maLichChieu: maLichChieu,
+      danhSachVe,
+    };
+    if (userLogin) {
+      moviesAPI
+        .bookingTicket(ticket)
+        .then((res) => {
+          setSelectSeat([]);
+          getBooking();
+          message.success(res.data.content);
+        })
+        .catch((err) => {
+          console.log(
+            "🚀 ~ file: BuyTicket.js:137 ~ handleBuyTicket ~ err:",
+            err
+          );
+          message.error("mua vé thất bại");
+        });
+    }
+  };
 
   let isSelected = (seat) => {
     return selectSeat?.some((chair) => chair.maGhe === seat.maGhe);
@@ -64,19 +164,35 @@ export default function BuyTicket() {
     }
   };
   return (
-    <div className="bookingMovie ">
-      <div className="container flex py-5 gap-5">
-        <div>
-          <div className="grow grid grid-cols-10 gap-5">{renderListSeat()}</div>
-          <div className="flex items-center justify-center gap-3 mt-5">
-            <span className="gheThuong inline-block"></span>
-            <span>Ghế thường</span>
+    <div>
+      <Header />
+      <div className="bookingMovie bg-slate-500">
+        <div className="container flex py-5 gap-5">
+          <div>
+            <div className="grow grid grid-cols-10 gap-5 bg-gray-400 shadow-neutral-950">
+              {renderListSeat()}
+            </div>
+            <div className="flex items-center justify-center gap-3 mt-5">
+              <span className="gheThuong inline-block"></span>
+              <span>Ghế thường</span>
 
-            <span className="gheVip inline-block"></span>
-            <span>Ghế Vip</span>
+              <span className="gheVip inline-block"></span>
+              <span>Ghế Vip</span>
 
-            <span className="gheDaDat inline-block">X</span>
-            <span>Ghế đã đặt</span>
+              <span className="gheDaDat inline-block">X</span>
+              <span>Ghế đã đặt</span>
+            </div>
+          </div>
+          <div className="px-7">
+            {renderBill()}
+            <div
+              className="bg-red-500 h-16 text-white text-2xl font-bold text-center leading-[64px] hover:bg-red-400 cursor-pointer"
+              onClick={() => {
+                handleBuyTicket();
+              }}
+            >
+              Mua vé
+            </div>
           </div>
         </div>
       </div>

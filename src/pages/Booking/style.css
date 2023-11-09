@@ -1,9 +1,5 @@
 .bookingMovie {
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-repeat: none;
-  background-image: url("./bgmovie.jpg");
+  font-size: 20px;
 }
 .gheThuong {
   @apply bg-gray-300 h-10 w-10 leading-10 text-center rounded-md;
@@ -13,4 +9,9 @@
 }
 .gheDaDat {
   @apply !cursor-none !bg-gray-800 text-white h-10 w-10 leading-10 text-center rounded-md;
+}
+
+.listBuy td,
+.listBuy th {
+  @apply py-5 border-t-4 text-center;
 }
