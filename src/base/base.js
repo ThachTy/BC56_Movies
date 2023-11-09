@@ -1,7 +1,7 @@
 
 /**
  * 
- * @param {*} nameStorage  : string
+ * @param {string} nameStorage  : string
  * @param {*} value : any
  * @returns 
  */
@@ -18,6 +18,20 @@ export const setLocaleStorage = (nameStorage = "", value) => {
  */
 export const getLocaleStorage = (nameStorage = "") => {
     let value = localStorage.getItem(nameStorage);
-    let data = value && JSON.parse(value);
+    let data = (value != null) ? JSON.parse(value) : false;
     return data;
+}
+/**
+ * 
+ * @param {string} date:  (default: "")
+ * @param {string} locales:  (default: en-BG)
+ * @returns 
+ */
+export const changeToSortDate = (date = "", locales = "en-GB") => {
+    let sortDate;
+    if (date != "") {
+        let option = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        sortDate = new Date(date).toLocaleDateString(locales, option);
+    }
+    return sortDate;
 }

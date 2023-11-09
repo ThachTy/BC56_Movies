@@ -26,11 +26,11 @@ function Login() {
                     /* User check Remember */
                     let infoUser = (isRememberRef.current) ? { accessToken: res?.data.content.accessToken, taiKhoan: values?.taiKhoan, matKhau: values?.matKhau }
                         : { accessToken: res?.data.content.accessToken };
-                    /* Save into LocaleStorage*/
+                    /* Save accesToken into LocaleStorage*/
                     let isLogin = setLocaleStorage("User", infoUser);
                     /* */
                     isLogin && message.open({ type: "success", content: "Đăng nhập thành công" })
-                        && dispatch({ type: SET_USER, payload: res?.data.content })
+                        && dispatch({ type: SET_USER, payload: { ...res?.data.content, isLogin: true } })
                         && setTimeout(() => navigate("/Home"), 1500);
                 }).catch(err => { throw err?.response.data.content });
         } catch (error) {

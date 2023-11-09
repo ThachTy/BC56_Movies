@@ -8,7 +8,9 @@ function NotFound({ children }) {
 
 
     return (
-        <div>{children}</div>
+        <div className='w-full h-screen relative'>
+            <img className='w-full h-full object-contain' src='https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg' />
+        </div >
     )
 }
 
