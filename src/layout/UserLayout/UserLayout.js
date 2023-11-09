@@ -74,6 +74,18 @@ const UserLayout = () => {
                 </p>
               ),
             },
+            {
+              label: (
+                <p
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  <UserOutlined />
+                  <span>Home</span>
+                </p>
+              ),
+            },
           ]}
         />
       </Sider>
