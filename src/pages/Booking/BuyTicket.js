@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { moviesAPI } from "../../service/axios/api";
 import "../Booking/style.css";
 import Header from "../../components/Header/Header";
@@ -9,6 +9,7 @@ export default function BuyTicket() {
   const { maLichChieu } = useParams();
   const [room, setRoom] = useState([]);
   const [selectSeat, setSelectSeat] = useState([]);
+  let navigate = useNavigate();
   let userLogin = JSON.parse(localStorage.getItem("User"));
 
   let getBooking = () => {
@@ -144,6 +145,9 @@ export default function BuyTicket() {
           );
           message.error("mua vé thất bại");
         });
+    } else {
+      message.error("bạn chưa đăng nhập ");
+      navigate("/Login");
     }
   };
 
