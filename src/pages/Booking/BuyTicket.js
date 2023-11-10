@@ -171,7 +171,7 @@ export default function BuyTicket() {
     <div>
       <Header />
       <div className="bookingMovie bg-slate-500">
-        <div className="container flex py-5 gap-5">
+        <div className="container py-5 gap-5  lg:flex ">
           <div>
             <div className="grow grid grid-cols-10 gap-5 bg-gray-400 shadow-neutral-950">
               {renderListSeat()}
@@ -187,7 +187,7 @@ export default function BuyTicket() {
               <span>Ghế đã đặt</span>
             </div>
           </div>
-          <div className="px-7">
+          <div className="px-7 mt-5">
             {renderBill()}
             <div
               className="bg-red-500 h-16 text-white text-2xl font-bold text-center leading-[64px] hover:bg-red-400 cursor-pointer"
