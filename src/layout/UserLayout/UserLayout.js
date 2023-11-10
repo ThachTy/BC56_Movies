@@ -32,6 +32,10 @@ const UserLayout = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.removeItem("User");
+    window.location.href = "/";
+  };
   return (
     <Layout hasSider>
       <Sider
@@ -83,6 +87,14 @@ const UserLayout = () => {
                 >
                   <UserOutlined />
                   <span>Home</span>
+                </p>
+              ),
+            },
+            {
+              label: (
+                <p onClick={handleLogOut}>
+                  <UserOutlined />
+                  <span>Đăng Xuất</span>
                 </p>
               ),
             },

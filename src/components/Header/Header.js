@@ -106,14 +106,14 @@ function Header() {
                     Rạp Phim
                   </Link>
                 </li> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link
                     to="/User/UserPage"
                     className=" block py-2 pr-4 pl-3 text-sm "
                   >
                     Tài Khoản
                   </Link>
-                </li>{" "}
+                </li>{" "} */}
                 <li className="nav-item">
                   <Link to="/User" className=" block py-2 pr-4 pl-3 text-sm ">
                     Tài Khoản
