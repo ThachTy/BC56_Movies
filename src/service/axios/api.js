@@ -7,8 +7,8 @@ export const userAPI = {
     },
     //
     getInfoAccount: async () => {
-        let { content } = await https.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`).then(res => res?.data);
-        return content;
+        let account = await https.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`).then(res => res.data);
+        return account.content ?? null;
     },
     // meta - meta
     postLoginUser: async ({ taiKhoan, matKhau }) => {

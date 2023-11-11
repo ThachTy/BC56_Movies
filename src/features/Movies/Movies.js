@@ -38,7 +38,7 @@ export default function Movies() {
     return (
         <>
             <div className='text-center py-3 pb-5 '>
-                <ConfigProvider theme={{ components: { Pagination: { itemActiveBg: "crimson" }, } }}>
+                <ConfigProvider>
                     <Pagination onChange={(page, pageSize) => handleChangePage(page, pageSize)} defaultCurrent={1} defaultPageSize={10} total={totalMovieRef.current}></Pagination>
                 </ConfigProvider>
             </div >

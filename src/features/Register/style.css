@@ -1,56 +1,62 @@
 /* .register */
 .register {
-    width: 100%;
-    height: max-content;
-    background-image: url("/public/img/background02.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: 100% 100%;
-    position: relative;
+  width: 100%;
+  height: max-content;
+  background-image: url("/public/img/background02.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100% 100%;
+  position: relative;
 }
 
 .register::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.8)) 80%;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.8)) 80%;
 }
 
 .register .title {
-    font-size: 2rem;
-    text-align: center;
-    font-weight: 500;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    line-height: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  line-height: 3rem;
 }
 
 .register-content {
-    max-width: 100%;
-    min-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 5px 0 rgb(255, 255, 255, 0.2);
-    background-color: rgb(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 9;
+  max-width: 100%;
+  min-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgb(255, 255, 255, 0.2);
+  background-color: rgb(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 9;
 }
 
 .frmRegister {
-    max-width: max-content;
-    min-width: 250px;
-    width: 100%;
-    border-radius: 7px;
+  max-width: max-content;
+  min-width: 250px;
+  width: 100%;
+  border-radius: 7px;
 }
+
+.frmRegister #formRegister_maNhom_list {
+  background-color: red !important;
+}
+/* .ant-select-dropdown {
+} */
+
 
 /* .frmRegister label {
     color: #fff !important;
     font-weight: 500;
 } */
-
 
 /* Start Input*/
 /* .frmRegister input {
@@ -74,7 +80,6 @@
 } */
 
 /* End Input */
-
 
 /*  Start Button*/
 /* .frmRegister button {
@@ -103,27 +108,24 @@
 
 /* End Button */
 
-
 /* Start Select  */
 /* .frmRegister .ant-select-selector {
-    background-color: transparent !important;
-    color: #fff !important;
-    border: 1px solid gray !important;
-} */
+  background-color: transparent !important;
+  color: #fff !important;
+  border: 1px solid gray !important;
+}
 
-/* .frmRegister .ant-select-selector:hover,
+.frmRegister .ant-select-selector:hover,
 .frmRegister .ant-select-selector:focus-within,
 .frmRegister .ant-select-selector:active {
-    border: 1px solid #fff !important;
-    background-color: rgb(255, 255, 255, 0.5) !important;
+  border: 1px solid #fff !important;
+  background-color: rgb(255, 255, 255, 0.5) !important;
 } */
-
-
 
 /* Search */
 /* .frmRegister .ant-select-selector .ant-select-selection-search-input:focus,
 .frmRegister .ant-select-selector .ant-select-selection-search-input:hover {
-    border: none !important;
+  border: none !important;
 } */
 
 /* End Select */

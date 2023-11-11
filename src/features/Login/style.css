@@ -31,13 +31,13 @@
     font-weight: 400;
 }
 
-.login .btn-submit {
+.login .btn-login {
     color: #fff !important;
     border: 1px solid #fff !important;
 }
 
-.login .btn-submit:hover,
-.login .btn-submit:active {
+.login .btn-login:hover,
+.login .btn-login:active {
     background-color: red !important;
     color: #fff !important;
 }

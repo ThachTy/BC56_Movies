@@ -12,7 +12,7 @@ const https = axios.create({
 https.interceptors.request.use(function (config) {
     // Do something before request is sent
     let account = getLocaleStorage("User");
-    if (!account) {
+    if (account?.accessToken !== undefined) {
         config.headers.Authorization = "Bearer " + account?.accessToken;
     }
     return config;
