@@ -1,4 +1,4 @@
-import { useEffect, memo } from "react";
+import { useEffect, memo, useState } from "react";
 import { Link } from "react-router-dom";
 import { userAPI } from "../../service/axios/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,11 +11,12 @@ function Header() {
   const { user } = useSelector((state) => state.userReducer);
 
   useEffect(() => {
-    let isLogin = getLocaleStorage("User");
     const fetchInfoUser = async () => {
       try {
-        const infoUser = await userAPI.getInfoAccount();
-        dispatch({ type: SET_USER, payload: { ...infoUser, isLogin: true } });
+        let account = await userAPI.getInfoAccount();
+        if (account != null) {
+          dispatch({ type: SET_USER, payload: { ...account } });
+        }
       } catch (error) {
         console.error(error);
       }
@@ -23,10 +24,15 @@ function Header() {
     isLogin && fetchInfoUser();
   }, []);
 
-  const handleLogOut = () => {
+  useEffect(() => {
+    user?.maLoaiNguoiDung === "QuanTri " &&
+      setItems([{ label: <Link to="/User">Admin</Link>, key: 0 }, ...items]);
+  }, [user]);
+
+  function handleLogOut() {
     localStorage.removeItem("User");
     window.location.href = "/";
-  };
+  }
 
   // items dropwdown Login
   const items = [
@@ -79,15 +85,15 @@ function Header() {
                     .querySelector("#mobile-menu-2")
                     .classList.toggle("hidden");
                 }}
-                className="lg:hidden block px-4 ml-3 rounded"
+                className="lg:hidden block px-4 ml-3 rounded outline-none"
                 type="button"
               >
                 {/*Toggle Icon */}
-                <i className="bi bi-app-indicator text-[crimson]"></i>
+                <i className="bi bi-list text-[#fff]"></i>
               </button>
             </div>
             <div
-              className="hidden justify-center items-center flex-row absolute left-0 top-[55px] w-full bg-slate-100 lg:bg-transparent lg:static lg:flex lg:w-auto lg:order-1"
+              className="hidden justify-center items-center flex-row py-3 lg:py-0 absolute left-0 top-[55px] w-full bg-slate-600 lg:bg-transparent lg:static lg:flex lg:w-auto lg:order-1"
               id="mobile-menu-2"
             >
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
@@ -96,24 +102,14 @@ function Header() {
                     Trang Chủ
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <a href="#movies" className=" block py-2 pr-4 pl-3 text-sm">
-                    Phim
-                  </a>
-                </li>
                 <li className="nav-item">
-                  <Link to="Home/#cinema" className=" block py-2 pr-4 pl-3 text-sm ">
-                    Rạp Phim
-                  </Link>
-                </li> */}
-                {/* <li className="nav-item">
                   <Link
-                    to="/User/UserPage"
+                    to="Home/#cinema"
                     className=" block py-2 pr-4 pl-3 text-sm "
                   >
-                    Tài Khoản
+                    Rạp Phim
                   </Link>
-                </li>{" "} */}
+                </li>{" "}
                 <li className="nav-item">
                   <Link to="/User" className=" block py-2 pr-4 pl-3 text-sm ">
                     Tài Khoản
@@ -132,4 +128,5 @@ function Header() {
     </header>
   );
 }
+
 export default memo(Header);

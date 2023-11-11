@@ -20,7 +20,7 @@ https.interceptors.request.use(
     config.headers.Authorization = user && "Bearer " + user.accessToken;
 
     let account = getLocaleStorage("User");
-    if (!account) {
+    if (account?.accessToken !== undefined) {
       config.headers.Authorization = "Bearer " + account?.accessToken;
     }
     return config;

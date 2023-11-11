@@ -35,6 +35,24 @@ export const userAPI = {
 //         return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, user);
 //     },
 // }
+    //
+    getTypeUser: async () => {
+        return https.get(`/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`);
+    },
+    //
+    getInfoAccount: async () => {
+        let account = await https.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`).then(res => res.data);
+        return account.content ?? null;
+    },
+    // meta - meta
+    postLoginUser: async ({ taiKhoan, matKhau }) => {
+        return https.post(`/api/QuanLyNguoiDung/DangNhap/`, { taiKhoan, matKhau });
+    },
+    //
+    postNewUser: async (user) => {
+        return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, user);
+    },
+}
 
 /* Banner */
 export const bannerAPI = {

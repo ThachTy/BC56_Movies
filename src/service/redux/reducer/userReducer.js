@@ -1,7 +1,8 @@
+import { getLocaleStorage } from "../../../base/base";
 import { SET_USER } from "../constant/constant";
 const initialState = {
     user: {
-        isLogin: false,
+        taiKhoan: getLocaleStorage("User")?.taiKhoan,
     },
 }
 

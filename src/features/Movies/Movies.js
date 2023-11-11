@@ -51,12 +51,14 @@ export default function Movies() {
   return (
     <>
       <div className="text-center py-3 pb-5 ">
-        <Pagination
-          onChange={(page, pageSize) => handleChangePage(page, pageSize)}
-          defaultCurrent={1}
-          defaultPageSize={10}
-          total={totalMovieRef.current}
-        ></Pagination>
+        <ConfigProvider>
+          <Pagination
+            onChange={(page, pageSize) => handleChangePage(page, pageSize)}
+            defaultCurrent={1}
+            defaultPageSize={10}
+            total={totalMovieRef.current}
+          ></Pagination>
+        </ConfigProvider>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-3 lg:gap-5">
         {listMovie?.map((movie) => (
