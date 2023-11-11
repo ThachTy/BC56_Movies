@@ -4,12 +4,26 @@ import { userAPI } from "../../service/axios/api";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "antd";
 import { SET_USER } from "../../service/redux/constant/constant";
-import { getLocaleStorage } from "../../base/base";
 import "./style.css";
 function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer);
+  const [items, setItems] = useState([
+    { label: "Thông tin", key: 2 },
+    {
+      label: (
+        <button
+          className="w-full h-full rounded-sm bg-gray-200"
+          onClick={handleLogOut}
+        >
+          <i className="bi bi-box-arrow-right"></i>
+        </button>
+      ),
+      key: 5,
+    },
+  ]);
 
+  /* */
   useEffect(() => {
     const fetchInfoUser = async () => {
       try {
@@ -21,7 +35,7 @@ function Header() {
         console.error(error);
       }
     };
-    isLogin && fetchInfoUser();
+    user.taiKhoan && fetchInfoUser();
   }, []);
 
   useEffect(() => {
@@ -34,22 +48,7 @@ function Header() {
     window.location.href = "/";
   }
 
-  // items dropwdown Login
-  const items = [
-    { label: "Thông tin", key: 1 },
-    {
-      label: (
-        <button
-          className="w-full h-full rounded-sm bg-gray-200"
-          onClick={handleLogOut}
-        >
-          <i className="bi bi-box-arrow-right"></i>
-        </button>
-      ),
-      key: 5,
-    },
-  ];
-
+  /* render */
   return (
     <header className="header min-w-full sticky top-0 z-50">
       <div className="container-fluid">
@@ -64,10 +63,10 @@ function Header() {
             </Link>
             <div className="flex items-center lg:order-2">
               <div>
-                {user?.isLogin ? (
+                {user?.taiKhoan ? (
                   // Logout
                   <Dropdown placement="bottomLeft" arrow menu={{ items }}>
-                    <span className="cursor-pointer text-sm text-login">
+                    <span className=" cursor-pointer text-sm text-login capitalize">
                       {user?.hoTen}
                     </span>
                   </Dropdown>
@@ -103,18 +102,11 @@ function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to="Home/#cinema"
-                    className=" block py-2 pr-4 pl-3 text-sm "
-                  >
-                    Rạp Phim
-                  </Link>
-                </li>{" "}
-                <li className="nav-item">
-                  <Link to="/User" className=" block py-2 pr-4 pl-3 text-sm ">
-                    Tài Khoản
+                  <Link to="/" className=" block py-2 pr-4 pl-3 text-sm">
+                    Đặt Vé
                   </Link>
                 </li>
+
                 <li className="nav-item">
                   <Link to="#" className=" block py-2 pr-4 pl-3 text-sm">
                     Liên Hệ
