@@ -42,7 +42,6 @@
 }
 
 .card-movie .card-booking {
-  height: 50px;
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
@@ -50,14 +49,13 @@
   border: 1px solid crimson;
   border-radius: 25px;
   outline: none;
+  transition: all 0.25s;
 }
 .card-movie .card-booking:hover {
-  background-color: yellow;
   color: #000;
 }
 
 .card-movie .card-detail {
-  height: 50px;
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
@@ -66,8 +64,11 @@
   background-color: crimson;
   border-radius: 25px;
   outline: none;
+  transition: all 0.25s;
+  opacity: 0.8;
 }
 .card-movie .card-detail:hover {
-  background-color: green;
-  color: #000;
+  background-color: #434343;
+  color: #fff;
+  opacity: 1;
 }
