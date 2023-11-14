@@ -1,4 +1,4 @@
-import { useEffect, memo, useState } from "react";
+import { useEffect, memo } from "react";
 import { Link } from "react-router-dom";
 import { userAPI } from "../../service/axios/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,8 @@ import "./style.css";
 function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer);
-  const [items, setItems] = useState([
+
+  const items = [
     { label: "Thông tin", key: 2 },
     {
       label: (
@@ -21,7 +22,7 @@ function Header() {
       ),
       key: 5,
     },
-  ]);
+  ];
 
   /* */
   useEffect(() => {
@@ -39,8 +40,11 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    user?.maLoaiNguoiDung === "QuanTri " &&
-      setItems([{ label: <Link to="/User">Admin</Link>, key: 0 }, ...items]);
+    if (user?.maLoaiNguoiDung === "QuanTri ") {
+      items.unshift({ label: <Link to="/User">Admin</Link>, key: 0 });
+    }
+
+    // setItems([{ label: <Link to="/User">Admin</Link>, key: 0 }, ...items]);
   }, [user]);
 
   function handleLogOut() {

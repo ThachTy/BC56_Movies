@@ -69,21 +69,17 @@ function Login() {
 
   return (
     <main className="login">
-      <div className="container">
+      <div className="container sm:py-5">
         <div className="login-content mx-auto">
           <h3 className="title text-center my-5">Đăng Nhập</h3>
           <Form
+            layout="vertical"
             className="frmLogin"
             name="formLogin"
             style={{
               maxWidth: "100%",
               minWidth: 250,
-            }}
-            labelCol={{
-              span: 8,
-            }}
-            wrapperCol={{
-              span: 14,
+              paddingInline: 40,
             }}
             initialValues={{
               taiKhoan: user.taiKhoan,
@@ -95,7 +91,7 @@ function Login() {
           >
             {/* Username */}
             <Form.Item
-              label="Username"
+              label="Tài Khoản :"
               name="taiKhoan"
               rules={[
                 {
@@ -108,7 +104,8 @@ function Login() {
             </Form.Item>
             {/* Password */}
             <Form.Item
-              label="Password"
+              className="flex-grow"
+              label="Mật Khẩu :   "
               name="matKhau"
               rules={[
                 {
@@ -122,10 +119,7 @@ function Login() {
             <Form.Item
               name="remember"
               valuePropName="checked"
-              wrapperCol={{
-                offset: 7,
-                span: 16,
-              }}
+              style={{ textAlign: "center" }}
             >
               <>
                 <Checkbox

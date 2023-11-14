@@ -39,93 +39,18 @@
   z-index: 9;
 }
 
-.frmRegister {
+.register .frmRegister {
   max-width: max-content;
   min-width: 250px;
   width: 100%;
   border-radius: 7px;
 }
-
-.frmRegister #formRegister_maNhom_list {
-  background-color: red !important;
+.ant-select-selector {
+  border-color: rgb(255, 255, 255, 0.5) !important;
 }
-/* .ant-select-dropdown {
-} */
-
-
-/* .frmRegister label {
-    color: #fff !important;
-    font-weight: 500;
-} */
-
-/* Start Input*/
-/* .frmRegister input {
-    background-color: transparent;
-    border: 1px solid ;
-    color: #fff;
+.ant-select-dropdown {
+  background-color: rgb(0, 0, 0, 0.5) !important;
 }
-
-.frmRegister input:focus,
-.frmRegister input:hover {
-    border: 1px solid #fff !important;
-    background-color: rgb(255, 255, 255, 0.5);
-}
-
-
-.frmRegister .ant-form-item-explain-error {
-    text-wrap: nowrap;
-    position: absolute;
-    top: 35px;
-    text-align: center;
-} */
-
-/* End Input */
-
-/*  Start Button*/
-/* .frmRegister button {
-    color: #fff;
-    line-height: 1rem;
-    margin-right: 0.5rem;
-    border: 1px solid gray !important;
-    box-shadow: none;
-    appearance: none;
-    -webkit-appearance: none;
-} */
-
-/* .frmRegister button:hover,
-.frmRegister button:focus,
-.frmRegister button:focus-visible {
-    border: 1px solid #fff !important;
-    background-color: rgb(65, 65, 65);
-    color: #fff !important;
-    box-shadow: none !important;
-    outline: none !important;
-} */
-
-/* .frmRegister button span {
-    line-height: 0.7rem;
-} */
-
-/* End Button */
-
-/* Start Select  */
-/* .frmRegister .ant-select-selector {
-  background-color: transparent !important;
-  color: #fff !important;
-  border: 1px solid gray !important;
-}
-
-.frmRegister .ant-select-selector:hover,
-.frmRegister .ant-select-selector:focus-within,
-.frmRegister .ant-select-selector:active {
-  border: 1px solid #fff !important;
+.ant-select-item:hover {
   background-color: rgb(255, 255, 255, 0.5) !important;
-} */
-
-/* Search */
-/* .frmRegister .ant-select-selector .ant-select-selection-search-input:focus,
-.frmRegister .ant-select-selector .ant-select-selection-search-input:hover {
-  border: none !important;
-} */
-
-/* End Select */
+}

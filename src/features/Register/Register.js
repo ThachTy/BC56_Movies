@@ -11,7 +11,6 @@ import {
 } from "antd";
 import "./style.css";
 import { userAPI } from "../../service/axios/api";
-import { getLocaleStorage } from "../../base/base";
 
 const Register = () => {
   const [loaiNguoiDung, setLoaiNguoiDung] = useState([]);
@@ -37,27 +36,24 @@ const Register = () => {
   }, []);
 
   const onFinish = async (values) => {
-    //         {
-    //     "taiKhoan": "admin321",
-    //     "matKhau": "admin321",
-    //     "email": "admin321@gmail.com",
-    //     "soDt": "0123456789",
-    //     "maNhom": "GP01",
-    //     "maLoaiNguoiDung": "QuanTri",
-    //     "hoTen": "admin min"
-    //   }
-
     try {
-      if (!getLocaleStorage("User")) throw "Bạn chưa đăng nhập";
-      else {
+      if (values) {
+        let newUser = {
+          taiKhoan: values.taiKhoan,
+          matKhau: values.matKhau,
+          email: values.email,
+          soDt: values.soDt,
+          maNhom: values.maNhom,
+          hoTen: values.hoTen,
+        };
         await userAPI
-          .postNewUser(values)
+          .postNewUser(newUser)
           .then((res) =>
             message.open({ type: "success", content: res?.data.message })
           )
           .catch((err) => {
-            console.log(err);
-            throw err?.response.data.content;
+            console.log();
+            throw err?.response.data.content || "Đăng ký không thành công!";
           });
       }
     } catch (error) {
@@ -185,7 +181,19 @@ const Register = () => {
                   <Form.Item
                     label="Số Điện Thoại : "
                     name={"soDt"}
-                    rules={[{ message: "Số điện thoại trống" }]}
+                    rules={[
+                      { message: "Số điện thoại trống" },
+                      ({ getFieldValue }) => ({
+                        validator(_, value) {
+                          if (!isNaN(value) && value.length > 5) {
+                            return Promise.resolve();
+                          }
+                          return Promise.reject(
+                            new Error("Nhập sai số điện thoại")
+                          );
+                        },
+                      }),
+                    ]}
                   >
                     <Input />
                   </Form.Item>
@@ -211,7 +219,8 @@ const Register = () => {
                 <Col className="w-full lg:pr-2 lg:w-1/2">
                   <Form.Item label="Mã Nhóm : " name={"maNhom"}>
                     <Select
-                      className="focus-visible:none"
+                      id={"Select-GroupUser"}
+                      style={{ activeBorderColor: "red" }}
                       showSearch
                       placeholder="Search to Select"
                       optionFilterProp="children"
@@ -237,29 +246,6 @@ const Register = () => {
                           label: "GP03",
                         },
                       ]}
-                    ></Select>
-                  </Form.Item>
-                </Col>
-                {/* Loai Nguoi Dung */}
-                <Col className="w-full lg:pl-2 lg:w-1/2">
-                  <Form.Item
-                    label="Mã Loại Người Dùng :"
-                    name={"maLoaiNguoiDung"}
-                  >
-                    <Select
-                      className="focus-visible:none"
-                      showSearch
-                      placeholder="Search to Select"
-                      optionFilterProp="children"
-                      filterOption={(input, option) =>
-                        (option?.label ?? "").includes(input)
-                      }
-                      filterSort={(optionA, optionB) =>
-                        (optionA?.label ?? "")
-                          .toLowerCase()
-                          .localeCompare((optionB?.label ?? "").toLowerCase())
-                      }
-                      options={loaiNguoiDung}
                     ></Select>
                   </Form.Item>
                 </Col>
