@@ -43,8 +43,6 @@ function Header() {
     if (user?.maLoaiNguoiDung === "QuanTri ") {
       items.unshift({ label: <Link to="/User">Admin</Link>, key: 0 });
     }
-
-    // setItems([{ label: <Link to="/User">Admin</Link>, key: 0 }, ...items]);
   }, [user]);
 
   function handleLogOut() {
