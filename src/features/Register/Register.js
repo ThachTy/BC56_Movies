@@ -11,9 +11,12 @@ import {
 } from "antd";
 import "./style.css";
 import { userAPI } from "../../service/axios/api";
+import { useNavigate } from "react-router-dom";
+import { setLocaleStorage } from "../../base/base";
 
 const Register = () => {
   const [loaiNguoiDung, setLoaiNguoiDung] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -48,9 +51,22 @@ const Register = () => {
         };
         await userAPI
           .postNewUser(newUser)
-          .then((res) =>
-            message.open({ type: "success", content: res?.data.message })
-          )
+          .then((res) => {
+            /* User check Remember */
+            let infoUser = {
+              taiKhoan: values?.taiKhoan,
+              matKhau: values?.matKhau,
+            };
+
+            /* Save accesToken into LocaleStorage*/
+            let isLogin = setLocaleStorage("User", infoUser);
+
+            isLogin &&
+              message.open({ type: "success", content: res?.data.message });
+            setTimeout(() => {
+              navigate("/Login");
+            }, 2000);
+          })
           .catch((err) => {
             console.log();
             throw err?.response.data.content || "Đăng ký không thành công!";

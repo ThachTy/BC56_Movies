@@ -14,11 +14,6 @@ export default function Movies() {
         await moviesAPI
           .getAllMovies()
           .then((res) => {
-            console.log(
-              "🚀 ~ file: Movies.js:17 ~ .then ~ res:",
-              res?.data.content.items
-            );
-
             totalMovieRef.current = res?.data.content.totalCount;
             setListMovie(res?.data.content.items);
           })
