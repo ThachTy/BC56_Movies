@@ -5,26 +5,7 @@ export const userAPI = {
   getTypeUser: async () => {
     return https.get(`/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`);
   },
-  //
-  getInfoAccount: async () => {
-    let { content } = await https
-      .post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
-      .then((res) => res?.data);
-    return content;
-  },
-  // meta - meta
-  postLoginUser: async ({ taiKhoan, matKhau }) => {
-    return https.post(`/api/QuanLyNguoiDung/DangNhap/`, { taiKhoan, matKhau });
-  },
-  //
-  postNewUser: async (user) => {
-    console.log(user);
-    return https.post(`/api/QuanLyNguoiDung/DangKy`, user);
-  },
 
-  getTypeUser: async () => {
-    return https.get(`/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`);
-  },
   //
   getInfoAccount: async () => {
     let account = await https
