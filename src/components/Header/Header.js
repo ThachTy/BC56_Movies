@@ -8,6 +8,7 @@ import "./style.css";
 function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer);
+  console.log("12233423");
 
   const items = [
     { label: "Thông tin", key: 2 },
