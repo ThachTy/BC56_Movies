@@ -26,7 +26,7 @@ function Carousel() {
   return (
     <div
       id="carouselExampleIndicators"
-      className="carousel slide "
+      className="carousel slide"
       data-ride="carousel"
     >
       <ol className="carousel-indicators">
@@ -42,7 +42,7 @@ function Carousel() {
           );
         })}
       </ol>
-      <div className="carousel-inner ">
+      <div className="carousel-inner w-[99vw]">
         {/* Carousel items */}
         {listBanner?.map((banner, index) => {
           return (
@@ -51,7 +51,7 @@ function Carousel() {
               className={`carousel-item + ${index == 0 && "active"}`}
             >
               <img
-                className="d-block object-fill w-screen h-[250px] md:h-[450px] lg:object-cover lg:h-[90vh]"
+                className="carousel-img "
                 src={banner?.hinhAnh}
                 alt={banner?.maPhim}
               />

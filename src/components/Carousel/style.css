@@ -1,4 +1,4 @@
-.carouselExampleIndicators {
+#carouselExampleIndicators {
     position: relative;
 }
 
@@ -10,4 +10,29 @@
 .carousel-indicators>li[data-target="#carouselExampleIndicators"] {
     height: 3px;
     width: 20px;
+}
+
+.carousel-img {
+    display: block;
+    object-fit: fill;
+    height: 250px;
+    width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+    .carousel-img {
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-img {
+        height: 450px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .carousel-img {
+        height: calc(100vh - 70px);
+    }
 }

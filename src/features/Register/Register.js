@@ -109,7 +109,7 @@ const Register = () => {
         },
       }}
     >
-      <main className="register py-5">
+      <main className="register py-10">
         <div className="container flex items-center justify-center md:justify-end">
           <div className="register-content p-5">
             <h3 className="title pb-2">Đăng Ký</h3>
