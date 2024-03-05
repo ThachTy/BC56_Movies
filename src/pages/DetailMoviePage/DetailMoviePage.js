@@ -74,7 +74,7 @@ function DetailMoviePage() {
               <div className="detail-booking">
                 <Link
                   to={`/Datve/${detailMovie?.maPhim}`}
-                  className="btn-booking block w-[80px] h-[80px]"
+                  className="btn-booking"
                 >
                   Đặt Vé
                 </Link>

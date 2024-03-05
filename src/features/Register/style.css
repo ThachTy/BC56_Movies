@@ -2,7 +2,7 @@
 .register {
   width: 100%;
   height: max-content;
-  background-image: url("/public/img/background02.png");
+  background-image: url("/src/assets/img/background02.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 100% 100%;
@@ -45,12 +45,15 @@
   width: 100%;
   border-radius: 7px;
 }
+
 .ant-select-selector {
   border-color: rgb(255, 255, 255, 0.5) !important;
 }
+
 .ant-select-dropdown {
   background-color: rgb(0, 0, 0, 0.5) !important;
 }
+
 .ant-select-item:hover {
   background-color: rgb(255, 255, 255, 0.5) !important;
 }

@@ -21,6 +21,8 @@
 .detail-image:hover .detail-booking .btn-booking {
     opacity: 1;
     visibility: visible;
+    animation: waves 1s linear infinite alternate-reverse;
+
 }
 
 .detail-booking {
@@ -43,14 +45,19 @@
 }
 
 .btn-booking {
-    border-radius: 50%;
-    color: #fff;
-    padding: 1.2rem 0;
-    font-size: 1rem;
-    background-color: crimson;
-    text-align: center;
-    font-weight: 600;
+    text-transform: uppercase;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
     opacity: 0.1;
+    color: #fff;
+    background-color: crimson;
+    border-radius: 50%;
+    text-align: center;
     visibility: hidden;
     transition: all 0.35s linear;
 }
@@ -98,4 +105,19 @@
     to {
         clip-path: circle(125%);
     }
+}
+
+@keyframes waves {
+    /* from {
+        box-shadow: 0 0 5px 0px rgb(255, 255, 255, 0.3),
+            0 0 10px 0px rgb(255, 255, 255, 0.8),
+            0 0 15px 0px rgb(255, 255, 255, 0.5);
+    } */
+
+    to {
+        box-shadow: 0 0 30px 5px rgb(255, 255, 255, 0.3),
+            0 0 45px 5px rgb(255, 255, 255, 0.8),
+            0 0 75px 5px rgb(255, 255, 255, 0.5);
+    }
+
 }

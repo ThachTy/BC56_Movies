@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "antd";
 import { SET_USER } from "../../service/redux/constant/constant";
 import "./style.css";
+import logo from "../../assets/img/logo.png";
+
 function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer);
@@ -57,11 +59,7 @@ function Header() {
         <nav className="lg:px-6 py-2.5">
           <div className="flex flex-nowrap justify-between items-center mx-auto">
             <Link to="/" className="flex items-center">
-              <img
-                src="./img/logo.png"
-                className="mr-3 h-6 sm:h-9"
-                alt="Flowbite Logo"
-              />
+              <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
             </Link>
             <div className="flex items-center lg:order-2">
               <div>
