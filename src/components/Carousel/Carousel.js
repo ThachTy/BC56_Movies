@@ -42,7 +42,7 @@ function Carousel() {
           );
         })}
       </ol>
-      <div className="carousel-inner w-[99vw]">
+      <div className="carousel-inner">
         {/* Carousel items */}
         {listBanner?.map((banner, index) => {
           return (

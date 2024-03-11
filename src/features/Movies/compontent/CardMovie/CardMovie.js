@@ -29,16 +29,16 @@ export default function CardMovie({ movie }) {
           <i className="bi bi-calendar-heart mx-1"></i>
           {changeToSortDate(movie?.ngayKhoiChieu)}
         </p>
-        <div className="w-full flex flex-row gap-1">
+        <div className="w-full flex-nowrap flex gap-1">
           <Link
             to={`/Datve/${movie?.maPhim}`}
-            className="card-booking w-full px-[0.3rem] py-[0.2rem]"
+            className="card-booking w-full py-2 "
           >
             Đặt Vé
           </Link>
           <Link
             to={`/Movie/${movie?.maPhim}`}
-            className="card-detail w-full px-[0.3rem] py-[0.2rem]"
+            className="card-detail w-full py-2"
             type="button"
           >
             Chi Tiết

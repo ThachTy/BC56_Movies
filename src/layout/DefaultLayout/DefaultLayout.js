@@ -5,9 +5,9 @@ import Footer from "../../components/Footer/Footer";
 
 export default function DefaultLayout() {
   return (
-    <div className="flex flex-col justify-between items-center w-ful">
+    <div className="flex flex-col justify-between items-center w-full">
       <Header></Header>
-      <div className="flex flex-grow w-full h-max justify-center">
+      <div className="min-w-full">
         <Outlet></Outlet>
       </div>
 

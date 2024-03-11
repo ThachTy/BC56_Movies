@@ -7,11 +7,8 @@ export default function HomePage() {
   return (
     <main>
       {/* Banner */}
-      <section className="carousel">
-        <div className="carousel-content">
-          <Carousel></Carousel>
-        </div>
-      </section>
+
+      <Carousel></Carousel>
 
       {/* Movies */}
       <section id="movies" className="movies">
@@ -29,7 +26,7 @@ export default function HomePage() {
 
       {/* Cinema */}
       <section id="cinema" className="cinema">
-        <div className="container my-[2rem] py-[1rem] bg-[#f3f4fa] rounded-md">
+        <div className="container my-[2rem] py-[1rem]bg-[#f3f4fa] rounded-md">
           <h3 className="text-left text-[2rem] mb-5">Rạp Chiếu Phim</h3>
           <Cinema></Cinema>
         </div>
