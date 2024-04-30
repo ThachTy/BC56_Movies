@@ -32,14 +32,14 @@ export const bannerAPI = {
 
 /* Movies */
 export const moviesAPI = {
-  // /api/QuanLyPhim/LayDanhSachPhim?maNhom=GP09
+  // /api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01
   getAllMovies: async () => {
-    return https.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09`);
+    return https.get(`/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP01`);
   },
-  // /api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=1&soPhanTuTrenTrang=10
+  // /api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP01&soTrang=1&soPhanTuTrenTrang=10
   getMovies: async (soTrang, soPhanTuTrenTrang) => {
     return https.get(
-      `/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP09&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`
+      `/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP01&soTrang=${soTrang}&soPhanTuTrenTrang=${soPhanTuTrenTrang}`
     );
   },
   getDetail: async (id) => {
@@ -86,10 +86,10 @@ export const cinemaAPI = {
   getAllCinema: async () => {
     return await https.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
   },
-  ///api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=BHDStar&maNhom=GP09
+  ///api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=BHDStar&maNhom=GP01
   getAllGroupCinema: async (maHeThongRap = "") => {
     return await https.get(
-      `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP09`
+      `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP01`
     );
   },
 };
